@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    font-family: var(--font-luxorious-script), sans-serif; 
+    font-family: var(--font-sour-gummy), sans-serif;
+}
