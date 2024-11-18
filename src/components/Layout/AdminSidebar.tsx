@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { UserMenu } from "../../features/Auth/userMenu/userMenu";
 import { User } from "../../utils/types";
 import { LogoutButton } from "@/features/Auth/logoutButton";
+import { FiHome, FiSettings, FiFileText } from 'react-icons/fi';
 
 interface AdminSidebarProps {
   user?: User;
@@ -22,30 +23,30 @@ export function AdminSidebar({ user, canManageSystem, canViewLogs }: AdminSideba
     path === pathname || (path !== "/admin" && pathname.startsWith(path));
 
   const linkClass = (path: string) =>
-    `flex items-center gap-3 px-4 py-3 rounded-lg text-base font-medium transition-all ${
+    `flex items-center gap-3 px-4 py-2 rounded-md text-base text-xs font-medium transition-all ${
       isActive(path)
-        ? "bg-blue-500 text-white shadow"
-        : "text-gray-600 hover:text-blue-500 hover:bg-gray-100"
+        ? "bg-blue-500/10 border-[0.5px] border-blue-900/10 text-blue-700"
+        : "text-gray-800 hover:text-blue-700 hover:bg-gray-100"
     }`;
 
+  const links = [
+    { path: "/admin", label: "Dashboard", icon: FiHome },
+    { path: "/admin/system", label: "System", condition: canManageSystem, icon: FiSettings },
+    { path: "/admin/logs", label: "Audit Logs", condition: canViewLogs, icon: FiFileText },
+  ];
+
   return (
-    <nav className="bg-white h-screen w-64 shadow-md flex flex-col justify-between">
-      {/* Sidebar Header */}
-      <div className="px-4 py-6">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">Admin Panel</h1>
+    <nav className="bg-white h-screen w-64 shadow-sm border-r border-black/10 flex flex-col justify-between">
+      <div className="px-4 py-4">
+        <h1 className="text-xl font-bold text-gray-800 mb-6">Admin Panel</h1>
         <div className="space-y-2">
-          <Link href="/admin" className={linkClass("/admin")}>
-            Dashboard
-          </Link>        
-          {canManageSystem && (
-            <Link href="/admin/system" className={linkClass("/admin/system")}>
-              System
-            </Link>
-          )}
-          {canViewLogs && (
-            <Link href="/admin/logs" className={linkClass("/admin/logs")}>
-              Audit Logs
-            </Link>
+          {links.map((link) => 
+            link.condition !== false && (
+              <Link key={link.path} href={link.path} className={linkClass(link.path)}>
+                {link.icon && <link.icon size={14} />}
+                {link.label}
+              </Link>
+            )
           )}
         </div>
       </div>

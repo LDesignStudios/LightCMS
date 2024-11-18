@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Container from "@/components/UI/container";
 
 const Roboto= localFont({
   src: "./fonts/roboto/roboto-500.woff2",
@@ -23,7 +24,9 @@ export default function RootLayout({
       <body
         className={`${Roboto.variable} antialiased`}
       >
-        {children}
+        <Container>
+          {children}
+        </Container>
       </body>
     </html>
   );

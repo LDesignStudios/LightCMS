@@ -3,6 +3,7 @@ import { getUser } from '@/utils/getUser';
 import type { ReactNode } from 'react';
 
 import { checkUserPermissions } from "@/lib/permissions";
+import Container from '@/components/UI/container';
 
 
 interface AdminLayoutProps {
@@ -17,9 +18,9 @@ async function AdminLayout ({ children }: AdminLayoutProps) {
   return (
     <div className="flex flex-row w-screen min-h-screen">
       <AdminSidebar user={user} canManageSystem={canManageSystem} canViewLogs={canViewLogs}/>
-      <div className='w-full'>
+      <Container className='w-full'>
         {children}
-      </div>
+      </Container>
     </div>
   );
 };
