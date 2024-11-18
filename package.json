@@ -1,13 +1,16 @@
 {
-  "name": "portfolio-manager",
-  "version": "0.1.0",
+  "name": "losensky.tech",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:seed": "node --loader ts-node/esm prisma/seed.ts"
+    "db:seed": "node --loader ts-node/esm prisma/seed.ts",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",
@@ -33,6 +36,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
+    "release-it": "^17.10.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
@@ -40,5 +44,14 @@
   "prisma": {
     "seed": "node --loader ts-node/esm prisma/seed.ts"
   },
-  "type": "module"
+  "type": "module",
+  "release-it": {
+    "git": {
+      "tag": true,
+      "requireCleanWorkingDir": true
+    },
+    "npm": {
+      "publish": true
+    }
+  }
 }
