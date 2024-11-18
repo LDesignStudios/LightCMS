@@ -39,7 +39,7 @@ export default async function EditRolePage({ params }: EditRolePageProps) {
   }
 
   return (
-    <div className="p-6">
+    <div className="">
       <div className="mb-6">
         <Link
           href="/admin"

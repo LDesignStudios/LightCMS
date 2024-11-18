@@ -39,13 +39,13 @@ export function RolesList({ roles, canManageRoles, rolesCount }: RolesListProps)
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+    <div className="bg-white shadow-md rounded-lg p-4 mt-6">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">All Roles ({rolesCount})</h2>
         <div className="flex gap-2">          
           {canManageRoles && (
             <Link
-              href="/admin/roles/add"
+              href="/admin/system/roles/add"
               className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500"
             >
               Add New Role
@@ -70,7 +70,7 @@ export function RolesList({ roles, canManageRoles, rolesCount }: RolesListProps)
                 {canManageRoles && (
                   <div className="flex items-center gap-2">
                     <Link
-                      href={`/admin/roles/${role.id}/edit`}
+                      href={`/admin/system/roles/${role.id}/edit`}
                       className="text-blue-600 hover:text-blue-800 text-sm"
                     >
                       Edit Role

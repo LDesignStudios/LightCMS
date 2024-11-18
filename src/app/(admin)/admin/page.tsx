@@ -1,15 +1,50 @@
-import { getUser } from "@/utils/getUser"
+import { getUser } from "@/utils/getUser";
+import Link from "next/link";
+
+import { checkUserPermissions } from "@/lib/permissions";
 
 export default async function Admin() {
   const user = await getUser();
+
+  const { canManageSystem } = await checkUserPermissions(user.id);
 
   return (
     <div>
       <div className="p-8 ">
         <h1 className="text-2xl font-bold mb-6">
           Welcome 👋, {user.name || user.email}!
-        </h1>            
-       
+        </h1>
+
+        <div className="flex flex-col gap-4">
+          {canManageSystem && (
+            <div className="flex flex-col gap-4">
+              <Link
+                href="/admin/system/permissions"
+                className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              >
+                Permissions Management
+              </Link>
+              <Link
+                href="/admin/system/roles"
+                className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              >
+                Roles Management
+              </Link>
+              <Link
+                href="/admin/system/users"
+                className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+              >
+                Users Management
+              </Link>
+            </div>
+          )}
+          <Link
+            href="/admin/user-profile"
+            className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
+            Profile
+          </Link>
+        </div>
       </div>
     </div>
   );

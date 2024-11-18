@@ -2,9 +2,8 @@ import { getUser } from "@/utils/getUser";
 import { EditUserProfileForm } from "@/features/Auth/EditUserForm";
 import Link from "next/link";
 
-export default async function ProfilePage() {
+export default async function UserPage() {
   const user = await getUser();
-
 
   return (
     <div className="p-6">
@@ -17,7 +16,7 @@ export default async function ProfilePage() {
         </Link>
       </div>
       
-      <div className="max-w-2xl">
+      <div className="">
         <h1 className="text-2xl font-bold mb-6">Edit Profile</h1>
         <EditUserProfileForm user={{ ...user, role: { ...user.role, description: user.role.description || null } }} />
       </div>

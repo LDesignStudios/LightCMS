@@ -45,7 +45,7 @@ export function PermissionsList({
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mt-6">
+    <div className="bg-white shadow-md rounded-lg mt-6">
       {error && (
         <div className="mb-4 text-sm text-red-600">{error}</div>
       )}
@@ -53,7 +53,7 @@ export function PermissionsList({
         <h2 className="text-xl font-semibold">All Permissions ({permissionsCount})</h2>
         {canManagePermissions && (
           <Link
-            href="/admin/permissions/add"
+            href="/admin/system/permissions/add"
             className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500"
           >
             Add New Permission
@@ -72,7 +72,7 @@ export function PermissionsList({
             {canManagePermissions && (
               <div className="flex space-x-2">
                 <Link
-                  href={`/admin/permissions/${permission.id}/edit`}
+                  href={`/admin/system/permissions/${permission.id}/edit`}
                   className="text-blue-600 hover:text-blue-800"
                 >
                   Edit

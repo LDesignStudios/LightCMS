@@ -11,6 +11,7 @@ export enum Permission {
     
     // Permission Management
     MANAGE_PERMISSIONS = 'manage_permissions',
+    MANAGE_SYSTEM = 'manage_system',
     
     // Content Management
     CREATE_CONTENT = 'create_content',
@@ -19,7 +20,7 @@ export enum Permission {
     DELETE_CONTENT = 'delete_content',
     
     // System Management
-    VIEW_AUDIT_LOGS = 'view_audit_logs',
+    VIEW_AUDIT_LOGS = 'view_logs',
     MANAGE_SETTINGS = 'manage_settings'
   }
   

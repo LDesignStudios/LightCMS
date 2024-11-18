@@ -23,7 +23,7 @@ export default async function AddRolePage() {
   });
 
   return (
-    <div className="p-6">
+    <div className="">
       <div className="mb-6">
         <Link
           href="/admin"

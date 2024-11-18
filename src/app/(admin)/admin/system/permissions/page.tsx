@@ -28,7 +28,7 @@ export default async function PermissionsPage() {
   const canManagePermissions = await hasPermission(user.id, Permission.MANAGE_PERMISSIONS);
 
   if (!canManagePermissions) {
-    redirect("/unauthorized");
+    redirect("/admin");
   }
 
   const permissions = await getAllPermissions();

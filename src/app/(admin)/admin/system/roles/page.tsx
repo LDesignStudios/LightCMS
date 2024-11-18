@@ -21,7 +21,7 @@ export default async function RolesPage() {
   const canManageRoles = await hasPermission(user.id, Permission.MANAGE_ROLES);
 
   if (!canViewRoles) {
-    redirect("/unauthorized");
+    redirect("/admin");
   }
 
   const rolesCount= await getAllRolesNumber();
@@ -29,7 +29,7 @@ export default async function RolesPage() {
   const roles = await getAllRoles();
 
   return (
-    <div className="p-6 w-full">
+    <div className="">
       <div className="mb-6">
         <Link
           href="/admin"

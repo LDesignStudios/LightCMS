@@ -45,7 +45,7 @@ export function UserMenu({ user }: UserMenuProps) {
     <div className="" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-4 bg-red-400 hover:bg-gray-500 duration-150 py-2 px-4 rounded-lg transition-colors"
+        className="flex items-center gap-4 hover:bg-gray-500 duration-150 py-2 px-4 rounded-lg transition-colors"
       >
         <ProfileAvatar 
           profilePicture={user.profilePicture}
@@ -63,7 +63,7 @@ export function UserMenu({ user }: UserMenuProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mb-64 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+        <div className="absolute mb-64 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
           <div className="px-4 py-2 border-b">
             <p className="text-sm font-medium">{user.name || user.email}</p>
             <p className="text-xs text-gray-500">{user.email}</p>
