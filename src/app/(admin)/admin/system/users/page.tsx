@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAllUsersNumber } from "@/utils/all";
+import Container from "@/components/UI/container";
+import Heading from "@/components/UI/heading";
 
 async function getAllUsers() {
   return prisma.user.findMany({
@@ -56,18 +58,18 @@ export default async function UsersPage() {
   const usersCount = await getAllUsersNumber();
 
   return (
-    <div className="p-6 w-full">
-      <div className="mb-6">
+    <Container className="p-6 w-full">
+      <Container className="mb-6">
         <Link
           href="/admin"
           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
         >
           ← Back to Dashboard
         </Link>
-      </div>
+      </Container>
       
-      <div className="">
-        <h1 className="text-2xl font-bold mb-6">Users Management</h1>
+      <Container>
+        <Heading className="text-2xl font-bold mb-6">Users Management</Heading>
         <UsersList 
           users={users} 
           roles={roles}
@@ -75,7 +77,7 @@ export default async function UsersPage() {
           canCreateUser={canCreateUser}
           usersCount={usersCount}
         />
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 } 

@@ -1,23 +1,24 @@
 import Link from "next/link";
-import languageData from './sys-lan.json'; 
+import data from '@/translations/en/en.json'; 
 import GetCurrentUser from "@/components/GetCurrentUser";
+import Container from "@/components/UI/container";
+import Heading from "@/components/UI/heading";
 
 export default function Admin() {
 
   return (
-    <div>
-      <div className="p-8 ">
-        <h1 className="text-2xl flex flex-row font-bold mb-6">
-          {languageData.welcomeMessage} 👋, <GetCurrentUser/>
-        </h1>
+      <Container className="p-8 ">
+        <Heading className="text-2xl flex flex-row mb-4 border-b border-black/15 pb-3 ">
+          {data.dashboard.welcomeMessage} 👋, <GetCurrentUser/>
+        </Heading>
 
-        <div className="flex flex-col gap-4">         
+        <Container className="flex flex-col gap-4">         
           {[
-            { href: "/admin/user-profile", text: languageData.profile },
-            { href: "/admin/posts", text: languageData.posts },
-            { href: "/admin/comments", text: languageData.comments },
-            { href: "/admin/pages", text: languageData.pages },
-            { href: "/admin/media", text: languageData.media },
+            { href: "/admin/user-profile", text: data.dashboard.profile },
+            { href: "/admin/posts", text: data.dashboard.posts },
+            { href: "/admin/comments", text: data.dashboard.comments },
+            { href: "/admin/pages", text: data.dashboard.pages },
+            { href: "/admin/media", text: data.dashboard.media },
           ].map((link) => (
             <Link
               key={link.href}
@@ -27,8 +28,7 @@ export default function Admin() {
               {link.text}
             </Link>
           ))}
-        </div>
-      </div>
-    </div>
+        </Container>
+      </Container>
   );
 }

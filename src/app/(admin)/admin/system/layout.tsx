@@ -1,11 +1,9 @@
-export default function SystemLayout({ children }: { children: React.ReactNode }) {
+import Container from "@/components/UI/container";
 
-  return (
-    <div className="flex">
-      <div className="flex-1 p-4">
-        {children}
-      </div>
-    </div>
-  );
+export default function SystemLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <Container className="flex-1 p-4">{children}</Container>;
 }
-

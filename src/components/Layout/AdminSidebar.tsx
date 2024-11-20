@@ -6,6 +6,8 @@ import { UserMenu } from "../../features/Auth/userMenu/userMenu";
 import { User } from "../../utils/types";
 import { LogoutButton } from "@/features/Auth/logoutButton";
 import { FiHome, FiSettings, FiFileText } from 'react-icons/fi';
+import { MdOutlinePushPin } from "react-icons/md";
+import data from '@/translations/en/en.json'; 
 
 interface AdminSidebarProps {
   user?: User;
@@ -30,9 +32,10 @@ export function AdminSidebar({ user, canManageSystem, canViewLogs }: AdminSideba
     }`;
 
   const links = [
-    { path: "/admin", label: "Dashboard", icon: FiHome },
-    { path: "/admin/system", label: "System", condition: canManageSystem, icon: FiSettings },
-    { path: "/admin/logs", label: "Audit Logs", condition: canViewLogs, icon: FiFileText },
+    { path: "/admin", label: data.navigation.links.dashboard, icon: FiHome },
+    { path: "/admin/posts", label: data.navigation.links.posts, icon: MdOutlinePushPin },
+    { path: "/admin/system", label: data.navigation.links.system, condition: canManageSystem, icon: FiSettings },
+    { path: "/admin/logs", label: data.navigation.links.logs, condition: canViewLogs, icon: FiFileText },
   ];
 
   return (

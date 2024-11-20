@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getAllRolesNumber } from "@/utils/all";
+import Container from "@/components/UI/container";
+import Heading from "@/components/UI/heading";
 
 async function getAllRoles() {
   return prisma.role.findMany({
@@ -29,24 +31,24 @@ export default async function RolesPage() {
   const roles = await getAllRoles();
 
   return (
-    <div className="">
-      <div className="mb-6">
+    <Container>
+      <Container className="mb-6">
         <Link
           href="/admin"
           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
         >
           ← Back to Dashboard
         </Link>
-      </div>
+      </Container>
       
-      <div className="">
-        <h1 className="text-2xl font-bold mb-6">Roles Management</h1>
+      <Container>
+        <Heading className="text-2xl font-bold mb-6">Roles Management</Heading>
         <RolesList 
           roles={roles}
           canManageRoles={canManageRoles}
           rolesCount={rolesCount}
         />
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }

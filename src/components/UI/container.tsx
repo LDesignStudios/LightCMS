@@ -7,7 +7,7 @@ interface ContainerProps {
 }
 
 const Container = ({ children, className, styled }: ContainerProps) => {
-  const defaultStyles = styled ? 'max-w-6xl p-4 bg-neutral-200 rounded-md shadow-sm m-2' : '';
+  const defaultStyles = styled ? 'p-4 bg-neutral-200 rounded-md shadow-sm m-4' : '';
   return (
     <div className={`${defaultStyles} ${className}`}>
       {children}

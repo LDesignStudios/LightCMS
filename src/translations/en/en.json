@@ -1,0 +1,49 @@
+{
+    "navigation": {
+        "generic": {
+            "back-to-dashboard": "Back to Dashboard",
+            "logout": "Logout"
+        },
+        "links": {
+            "dashboard": "Dashboard",
+            "posts": "Posts",
+            "system": "System",
+            "logs": "Logs"
+        }
+    },
+    "dashboard": {
+        "welcomeMessage": "Welcome",
+        "profile": "Profile",
+        "posts": "Posts",
+        "comments": "Comments",
+        "pages": "Pages",
+        "media": "Media"
+    },
+    "system": {
+        "title": "System",
+        "links": {
+            "roles": "Roles",
+            "permissions": "Permissions",
+            "users": "Users"
+        }
+    },
+    "buttons": {
+        "save": "Save",
+        "add": "Add",
+        "update": "Update"
+    },
+    "posts": {
+        "title": "Posts",
+        "decription": "Description" 
+    },
+    "forms": {
+        "general": {
+            "name": "Name",
+            "email": "Email"
+        },
+        "users": {
+            "current-password": "Current Password",
+            "new-password": "New Password"
+        }
+    }
+}

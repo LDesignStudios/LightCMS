@@ -1,29 +1,35 @@
+import Container from "@/components/UI/container";
+import Heading from "@/components/UI/heading";
 import Link from "next/link";
+
+import data from "@/translations/en/en.json";
 
 export default function System() {
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-6">System</h1>
-      <div className="flex flex-col gap-4">
+    <Container className="p-4">
+      <Heading className="text-2xl flex flex-row mb-4 border-b border-black/15 pb-3 ">
+        {data.system.title}
+      </Heading>
+      <Container className="flex flex-col gap-4">
         <Link
           href="/admin/system/users"
           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
         >
-          Users
+          {data.system.links.users}
         </Link>
         <Link
           href="/admin/system/roles"
           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
         >
-          Roles
+          {data.system.links.roles}
         </Link>
         <Link
           href="/admin/system/permissions"
           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
         >
-          Permissions
+          {data.system.links.permissions}
         </Link>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }

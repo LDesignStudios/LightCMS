@@ -1,0 +1,48 @@
+{   "navigation": {
+      "generic": {
+        "back-to-dashboard": "Zpět na přehled",
+        "logout": "Odhlásit se"
+      },
+      "links": {
+        "dashboard": "Přehled",        
+        "posts": "Příspěvky",
+        "system": "Systém",
+        "logs": "Logy"
+      }      
+    },   
+    "dashboard": {
+        "welcomeMessage": "Vítej",
+        "profile": "Profil",
+        "posts": "Příspěvky",
+        "comments": "Komentáře",
+        "pages": "Stránky",
+        "media": "Média"
+    },
+    "system": {
+        "title": "Systém",
+        "links": {
+          "roles": "Role",
+          "permissions": "Práva",
+          "users": "Uživatelé"
+        }      
+    },
+    "buttons": {
+        "save": "Uložit",
+        "add": "Přidat",
+        "update": "Aktualizovat"
+    },
+    "posts": {
+      "title": "Příspěvky",
+      "decription": "Popisek"
+    },
+    "forms": {
+      "general": {
+        "name": "Jméno",
+        "email": "Email"
+      },
+      "users": {
+        "current-password": "Aktuální heslo",
+        "new-password": "Nové heslo"
+      }
+    }
+}
