@@ -1,5 +1,5 @@
 import Link from "next/link";
-import data from '@/translations/en/en.json'; 
+import data from '@/translations/cz/cz.json'; 
 import GetCurrentUser from "@/components/GetCurrentUser";
 import Container from "@/components/UI/container";
 import Heading from "@/components/UI/heading";

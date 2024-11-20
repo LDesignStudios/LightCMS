@@ -13,9 +13,10 @@ interface UserMenuProps {
     profilePicture: string | null;
     profileColor: string | null;
   };
+  showText?: boolean;
 }
 
-export function UserMenu({ user }: UserMenuProps) {
+export function UserMenu({ user, showText }: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -55,15 +56,19 @@ export function UserMenu({ user }: UserMenuProps) {
         />
 
         <div className="text-left">
-          <p className="font-semibold text-sm">{user.name || user.email}</p>
-          <p className="text-xs text-gray-600 capitalize">
-            {user.role}
-          </p>
+          {showText && (
+            <>
+              <p className="font-semibold text-sm">{user.name || user.email}</p>
+              <p className="text-xs text-gray-600 capitalize">
+                {user.role}
+              </p>
+            </>
+          )}
         </div>
       </button>
 
       {isOpen && (
-        <div className="absolute mb-64 w-48 bg-white rounded-lg shadow-lg py-1 z-10">
+        <div className="absolute mb-64 bg-white rounded-lg shadow-lg py-1 z-10">
           <div className="px-4 py-2 border-b">
             <p className="text-sm font-medium">{user.name || user.email}</p>
             <p className="text-xs text-gray-500">{user.email}</p>
@@ -84,7 +89,7 @@ export function UserMenu({ user }: UserMenuProps) {
             </Link>
           </div>
           <div className="px-4 py-2 border-b">
-            <LogoutButton />
+            <LogoutButton showText={true}/>
           </div>
         </div>
       )}

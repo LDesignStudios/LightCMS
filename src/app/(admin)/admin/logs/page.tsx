@@ -4,7 +4,7 @@ import { hasPermission } from "@/lib/permissions";
 import { AuditLogsList } from "@/features/Logs/AuditLogsList";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import data from '@/translations/en/en.json'; 
+import data from '@/translations/cz/cz.json'; 
 
 
 import Container from "@/components/UI/container";

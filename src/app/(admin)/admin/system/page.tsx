@@ -2,7 +2,7 @@ import Container from "@/components/UI/container";
 import Heading from "@/components/UI/heading";
 import Link from "next/link";
 
-import data from "@/translations/en/en.json";
+import data from "@/translations/cz/cz.json";
 
 export default function System() {
   return (
