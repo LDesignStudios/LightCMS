@@ -7,12 +7,13 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 interface EditRolePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditRolePage({ params }: EditRolePageProps) {
+  const { id } = await params;
   const user = await getUser();
   const canManageRoles = await hasPermission(user.id, Permission.MANAGE_ROLES);
 
@@ -22,7 +23,7 @@ export default async function EditRolePage({ params }: EditRolePageProps) {
 
   const [role, permissions] = await Promise.all([
     prisma.role.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: { permissions: true }
     }),
     prisma.permission.findMany({

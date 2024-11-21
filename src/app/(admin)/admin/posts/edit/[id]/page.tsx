@@ -7,7 +7,7 @@ import { notFound, redirect } from "next/navigation"
 export default async function EditPostPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
   const { id } = await params;
 

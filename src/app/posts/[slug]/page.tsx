@@ -8,13 +8,16 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/sessions";
 
 type PageProps = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export default async function PostPage({
   params,
 }: PageProps) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params; // Await the params to get the slug
+
+
+  const post = await getPostBySlug(slug);
   const session = await getSession();
 
   if (!post) {
@@ -85,7 +88,7 @@ export default async function PostPage({
           </h2>
 
           {session ? (
-            <CommentForm postId={post.id} slug={params.slug} />
+            <CommentForm postId={post.id} slug={slug} />
           ) : (
             <div className="bg-blue-50 p-4 rounded-lg mb-8">
               <p className="text-blue-700">
