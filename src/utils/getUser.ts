@@ -29,6 +29,7 @@ export async function getUser() {
         }
       },
       name: true,
+      posts: true,
       profilePicture: true,
       profileColor: true,
       password: true,

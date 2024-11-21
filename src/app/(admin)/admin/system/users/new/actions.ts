@@ -56,6 +56,8 @@ export async function createUser(prevState: State, formData: FormData): Promise<
 
   const { email, password, name, roleId, profileColor } = validatedFields.data;
 
+  console.log('Validated User Data:', { email, password, name, roleId, profileColor });
+
   try {
     const existingUser = await prisma.user.findUnique({
       where: { email },
@@ -70,6 +72,14 @@ export async function createUser(prevState: State, formData: FormData): Promise<
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    console.log('Data to be inserted:', {
+      email,
+      password: hashedPassword,
+      name,
+      roleId,
+      profileColor,
+    });
 
     const newUser = await prisma.user.create({
       data: {

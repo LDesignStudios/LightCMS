@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 
 import { checkUserPermissions } from "@/lib/permissions";
 import Container from '@/components/UI/container';
+import { getUsersPostsCount } from '@/features/Content/Posts/Posts/getUsersPosts';
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -11,13 +12,14 @@ interface AdminLayoutProps {
 
 async function AdminLayout ({ children }: AdminLayoutProps) {
   const user = await getUser();
+  const postsCount = await getUsersPostsCount();
 
   const { canManageSystem, canViewLogs } = await checkUserPermissions(user.id);
 
   return (
     <Container className="flex flex-row w-screen min-h-screen">
-      <AdminSidebar user={user} canManageSystem={canManageSystem} canViewLogs={canViewLogs}/>
-      <Container className='w-full'>
+      <AdminSidebar user={user} postsCount={postsCount} canManageSystem={canManageSystem} canViewLogs={canViewLogs}/>
+      <Container className='w-full'>      
         {children}
       </Container>
     </Container>

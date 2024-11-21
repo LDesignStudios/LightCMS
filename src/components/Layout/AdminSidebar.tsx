@@ -18,6 +18,7 @@ import { useState } from "react";
 
 interface AdminSidebarProps {
   user?: User;
+  postsCount: number
   canViewUsers?: boolean;
   canManageSystem?: boolean;
   canViewLogs?: boolean;
@@ -25,6 +26,7 @@ interface AdminSidebarProps {
 
 export function AdminSidebar({
   user,
+  postsCount,
   canManageSystem,
   canViewLogs,
 }: AdminSidebarProps) {
@@ -54,7 +56,7 @@ export function AdminSidebar({
       path: "/admin/posts",
       label: data.navigation.links.posts,
       icon: MdOutlinePushPin,
-      count: 10,
+      count: postsCount,
     },
     {
       path: "/admin/system",

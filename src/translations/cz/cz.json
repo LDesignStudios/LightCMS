@@ -7,7 +7,8 @@
         "dashboard": "Přehled",        
         "posts": "Příspěvky",
         "system": "Systém",
-        "logs": "Logy"
+        "logs": "Logy",
+        "seo": "SEO"
       }      
     },   
     "dashboard": {
@@ -29,20 +30,43 @@
     "buttons": {
         "save": "Uložit",
         "add": "Přidat",
-        "update": "Aktualizovat"
+        "create": "Vytvořit",
+        "creating": "Vytvářím...",
+        "update": "Aktualizovat",
+        "updating": "Aktualizuji...",
+        "delete": "Smazat",
+        "cancel": "Zrušit",
+        "edit": "Editovat",
+        "new": "Nový"
     },
     "posts": {
       "title": "Příspěvky",
-      "decription": "Popisek"
+      "post": "Příspěvek",
+      "decription": "Popisek",
+      "published": "Publikované",
+      "draft": "Koncept",
+      "your-posts": "Vaše příspěvky",
+      "notFound": "Zatím nemáte žádné příspěvky. Vytvořte svůj první příspěvek výše!",
+      "created": "Vytvořil",
+      "addNewPost": "Přidat nový příspěvek",
+      "editPost": "Upravit příspěvek"
     },
     "forms": {
       "general": {
         "name": "Jméno",
-        "email": "Email"
+        "email": "Email",
+        "title": "Nadpis",
+        "featuredImage": "Náhledový obrázek",
+        "content": "Obsah",
+        "publish": "Sdílet ihned",
+        "chooseFile": "Vybrat soubor"
       },
       "users": {
-        "current-password": "Aktuální heslo",
+        "current-password-label": "Aktuální heslo",
         "new-password": "Nové heslo"
       }
+    },
+    "loading": {
+      "loading": "Načítám..."
     }
 }

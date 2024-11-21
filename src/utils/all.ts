@@ -11,3 +11,11 @@ export function getAllRolesNumber() {
 export function getAllPermissionsNumber() {
   return prisma.permission.count();
 }
+
+export function getAllUserPostsNumber(userId: number) {
+  return prisma.post.count({
+    where: {
+      authorId: userId.toString()
+    }
+  });
+}
