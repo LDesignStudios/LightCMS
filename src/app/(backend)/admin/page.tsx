@@ -8,7 +8,7 @@ export default function Admin() {
 
   return (
       <Container className="p-8 bg-gray-100 rounded-lg shadow-md">
-        <Heading className="text-3xl mb-6 text-center">
+        <Heading className="text-3xl mb-6 text-center flex flex-row">
           {data.dashboard.welcomeMessage} 👋, <GetCurrentUser/>
         </Heading>
 

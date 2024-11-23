@@ -2,9 +2,7 @@ import { getUser } from "@/utils/getUser";
 import { Permission } from "@/utils/types";
 import { hasPermission } from "@/lib/permissions";
 import { AuditLogsList } from "@/features/Logs/AuditLogsList";
-import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import data from '@/translations/cz/cz.json'; 
 
 
 import Container from "@/components/UI/container";
@@ -30,16 +28,7 @@ export default async function LogsPage() {
   const logs = await getAuditLogs();
 
   return (
-    <Container className="p-6">
-      <Container className="mb-6">
-        <Link
-          href="/admin"
-          className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
-        >
-          ← {data.navigation.generic["back-to-dashboard"]}
-        </Link>
-      </Container>
-      
+    <Container>      
       <Container className="w-full">
         <Heading className="text-2xl font-bold mb-6">Audit Logs</Heading>
         <AuditLogsList logs={logs} />

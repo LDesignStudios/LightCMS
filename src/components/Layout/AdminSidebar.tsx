@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { UserMenu } from "../../features/Auth/userMenu/userMenu";
 import { User } from "../../utils/types";
 import { LogoutButton } from "@/features/Auth/logoutButton";
 import { FiHome, FiFileText } from "react-icons/fi";
@@ -44,7 +43,7 @@ export function AdminSidebar({
     path === pathname || (path !== "/admin" && pathname.startsWith(path));
 
   const linkClass = (path: string) =>
-    `flex flex-row justify-between items-center gap-3 px-4 py-2 rounded-md text-base text-xs font-medium transition-all ${
+    `flex flex-row justify-between items-center gap-x-3 px-4 py-2 rounded-md text-base text-xs font-medium transition-all ${
       isActive(path)
         ? "bg-blue-500/10 border-[0.5px] border-blue-900/10 text-blue-700"
         : "text-gray-800 hover:text-blue-700 hover:bg-gray-100"
@@ -106,10 +105,10 @@ export function AdminSidebar({
 
   return (
     <nav
-      className={`bg-neutral-50 h-screen max-h-screen sticky top-0 shadow-sm border-r border-black/10 flex flex-col justify-between ${isSidebarOpen ? "w-64" : "w-16"}`}
+      className={`bg-neutral-50 h-screen max-h-screen sticky top-0 shadow-sm border-r border-black/10 flex flex-col justify-between ${isSidebarOpen ? "w-64" : ""}`}
     >
       <Container className="px-3 py-3">
-        <Container className="flex flex-row justify-between items-center  mb-2 border-b-[0.75px] border-black/20 pb-2">
+        <Container className="flex flex-row justify-between items-center  mb-3 py-2">
           <Heading
             className={`text-xl pl-2 font-bold text-gray-800 ${isSidebarOpen ? "block" : "hidden"}`}
           >
@@ -140,9 +139,9 @@ export function AdminSidebar({
                   href={link.path || '/'}
                   className={linkClass(link.path || '/')}
                 >
-                  <Container className="flex flex-row gap-x-3 items-center">
+                  <Container className="flex flex-row  items-center">
                     {link.icon && <link.icon size={14} />}
-                    {isSidebarOpen && <span>{link.label}</span>}
+                    {isSidebarOpen && <span className="ml-2">{link.label}</span>}
                   </Container>
                   {isSidebarOpen && link.count && (
                     <span className="ml-2 text-xs text-neutral-500">
@@ -156,16 +155,7 @@ export function AdminSidebar({
         </Container>
       </Container>
 
-      <Container className={`${isSidebarOpen ? "px-4 pb-6 space-y-4 ":"p-2"}`}>
-        <UserMenu
-          user={{
-            ...user,
-            role: user.role.name,
-            profilePicture: user.profilePicture ?? null,
-            profileColor: user.profileColor ?? null,
-          }}
-          showText={isSidebarOpen}
-        />
+      <Container className={`${isSidebarOpen ? "px-4 pb-6 space-y-4 ":"p-2"}`}>       
         <LogoutButton showText={isSidebarOpen}/>
       </Container>
     </nav>

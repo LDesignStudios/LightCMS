@@ -54,7 +54,7 @@ export function PostForm({ post }: PostFormProps) {
   }
 
   return (
-    <div className="w-full bg-white p-4 rounded-lg shadow">
+    <div className="w-full">
       <h2 className="text-xl font-bold mb-6 text-gray-900 ">
         {post ?  `${data.posts.editPost}` : `${data.posts.addNewPost}`}
       </h2>

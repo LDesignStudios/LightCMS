@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { ProfileAvatar } from "@/components/Layout/ProfileAvatar";
-import { LogoutButton } from '../logoutButton'
 import Link from 'next/link';
 
 interface UserMenuProps {
@@ -35,7 +34,7 @@ export function UserMenu({ user, showText }: UserMenuProps) {
     return (
       <Link 
         href="/login" 
-        className="flex items-center gap-4 hover:bg-blue-600 bg-blue-500 text-white duration-150 p-2 px-4 rounded-lg transition-colors"
+        className="flex items-center  hover:bg-blue-600 bg-blue-500 text-white duration-150 p-2 px-4 rounded-lg transition-colors"
       >
         <span className="font-semibold">Sign in</span>
       </Link>
@@ -45,8 +44,11 @@ export function UserMenu({ user, showText }: UserMenuProps) {
   return (
     <div className="" ref={menuRef}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-4 hover:bg-gray-500 duration-150 py-2 px-4 rounded-lg transition-colors"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen((prev) => !prev);
+        }}
+        className="flex items-center gap-x-2 hover:bg-gray-300 py-2 px-4 duration-150 rounded-lg transition-colors"
       >
         <ProfileAvatar 
           profilePicture={user.profilePicture}
@@ -58,19 +60,16 @@ export function UserMenu({ user, showText }: UserMenuProps) {
         <div className="text-left">
           {showText && (
             <>
-              <p className="font-semibold text-sm">{user.name || user.email}</p>
-              <p className="text-xs text-gray-600 capitalize">
-                {user.role}
-              </p>
+              <p className="font-semibold text-sm">{user.name || user.email}</p>             
             </>
           )}
         </div>
       </button>
 
       {isOpen && (
-        <div className="absolute top-0 bg-white rounded-lg shadow-lg py-1 z-10">
-          <div className="px-4 py-2 border-b">
-            <p className="text-sm font-medium">{user.name || user.email}</p>
+        <div className=" absolute right-4 top-14 border border-black/20 bg-neutral-200 rounded-lg shadow-lg py-1 z-10" onClick={(e) => e.stopPropagation()}>
+          <div className="px-4 py-2 border-b border-black/10">
+            <p className="text-sm font-semibold">{user.name || user.email}</p>
             <p className="text-xs text-gray-500">{user.email}</p>
           </div>
           <div className="px-4 py-2 border-b">
@@ -87,10 +86,7 @@ export function UserMenu({ user, showText }: UserMenuProps) {
             <Link href="/">
               <p className="text-sm font-medium">Homepage</p>
             </Link>
-          </div>
-          <div className="px-4 py-2 border-b">
-            <LogoutButton showText={true}/>
-          </div>
+          </div>         
         </div>
       )}
     </div>

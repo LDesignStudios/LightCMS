@@ -23,7 +23,8 @@ export function TabComponent({ tabs }: TabComponentProps) {
     return (
         <div className="flex flex-col w-full">
             {/* Tab container */}
-            <div className="bg-gray-100 flex items-start p-[6px] rounded  font-medium">
+            <div className="flex items-start font-medium">
+                <div className="bg-neutral-100 rounded p-1 space-x-2 border border-black/10">
                 {tabs.map((tab, index) =>
                     tab.visible && (
                         <button
@@ -43,6 +44,7 @@ export function TabComponent({ tabs }: TabComponentProps) {
                         </button>
                     )
                 )}
+                                </div>
             </div>
 
             {/* Tab content */}

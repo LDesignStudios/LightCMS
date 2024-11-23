@@ -6,20 +6,19 @@ const canManageIntegrations = true;
 
 export default function SettingsScreen() {
     const tabs = [
-        { label: "User Profile", visible: true, content: "User" },
-        { label: "Interface", visible: true },
-        { label: "System Preferences", visible: true },
-        { label: "SEO", visible: canManageSeo },
-        { label: "System", visible: canManageSystem },
-        { label: "Integrations", visible: canManageIntegrations },
+        { label: "User Profile", visible: true, content: "User Profile" },
+        { label: "Interface", visible: true, content: "User Interface" },
+        { label: "System Preferences", visible: true, content: "System Preferences" },
+        { label: "SEO", visible: canManageSeo, content: "SEO Management" },
+        { label: "System", visible: canManageSystem , content: "System" },
+        { label: "Integrations", visible: canManageIntegrations , content: "Integrations"},
     ];
 
 
     return (
-        <div className="p-4">
+        <div className="">
           <div className="flex flex-col items-start">          
-            <TabComponent tabs={tabs} />
-            
+            <TabComponent tabs={tabs} />            
           </div>
         </div>
     );

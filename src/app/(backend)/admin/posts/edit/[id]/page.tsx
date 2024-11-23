@@ -1,7 +1,6 @@
 import { PostForm } from "@/features/Content/Posts/Posts/PostForm"
 import { prisma } from "@/lib/prisma"
 import { getSession } from "@/lib/sessions"
-import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
 
 export default async function EditPostPage({
@@ -33,15 +32,8 @@ export default async function EditPostPage({
   }
 
   return (
-    <div className="p-8 min-h-screen">
+    <div>
       <div className="mx-auto">
-        <Link
-          href="/admin/posts"
-          className="inline-flex items-center text-sm text-gray-500 mb-8"
-        >
-          ← Back to all posts
-        </Link>
-
         <PostForm post={post} />
       </div>
     </div>

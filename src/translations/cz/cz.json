@@ -57,7 +57,13 @@
       "notFound": "Zatím nemáte žádné příspěvky. Vytvořte svůj první příspěvek výše!",
       "created": "Vytvořil",
       "addNewPost": "Přidat nový příspěvek",
-      "editPost": "Upravit příspěvek"
+      "editPost": "Upravit příspěvek",
+      "comments": {
+        "title": "Komentáře"
+      },
+      "likes": {
+        "title": "Libí se"
+      }
     },
     "forms": {
       "general": {
@@ -76,5 +82,14 @@
     },
     "loading": {
       "loading": "Načítám..."
+    },
+    "breadcrumb": {
+      "dashboard": "Přehled",
+      "posts": "Příspěvky",
+      "add": "Přidat",
+      "edit": "Upravit",
+      "pages": "Stránky",
+      "settings": "Nastavení",
+      "logs": "Logy"
     }
 }
