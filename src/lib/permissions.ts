@@ -44,12 +44,13 @@ export async function checkUserPermissions(userId: string) {
   const canManagePermissions = await hasPermission(userId, Permission.MANAGE_PERMISSIONS);
   const canManageSystem = await hasPermission(userId, Permission.MANAGE_SYSTEM);
   const canViewLogs = await hasPermission(userId, Permission.VIEW_AUDIT_LOGS);
-
+  const canManagePlugins = await hasPermission(userId, Permission.MANAGE_PLUGINS);
   return {
     canViewUsers,
     canManageRoles,
     canCreateUser,
     canManagePermissions,
+    canManagePlugins,
     canManageSystem,
     canViewLogs,
   };

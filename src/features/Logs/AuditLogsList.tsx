@@ -21,10 +21,10 @@ function formatDate(date: Date) {
 
 export function AuditLogsList({ logs }: AuditLogsListProps) {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6">
+    <div className="">
       <div className="w-full">
         <table className="divide-gray-200 w-full">
-          <thead>
+          <thead className="border border-black/20">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Timestamp

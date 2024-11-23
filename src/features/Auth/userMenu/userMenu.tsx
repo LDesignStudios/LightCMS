@@ -68,7 +68,7 @@ export function UserMenu({ user, showText }: UserMenuProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute mb-64 bg-white rounded-lg shadow-lg py-1 z-10">
+        <div className="absolute top-0 bg-white rounded-lg shadow-lg py-1 z-10">
           <div className="px-4 py-2 border-b">
             <p className="text-sm font-medium">{user.name || user.email}</p>
             <p className="text-xs text-gray-500">{user.email}</p>

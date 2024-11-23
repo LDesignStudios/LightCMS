@@ -4,11 +4,19 @@
         "logout": "Odhlásit se"
       },
       "links": {
+        "title": {
+            "main": "Hlavní",
+            "system": "Systém"
+        },
         "dashboard": "Přehled",        
         "posts": "Příspěvky",
         "system": "Systém",
         "logs": "Logy",
-        "seo": "SEO"
+        "seo": "SEO",
+        "pages": "Stránky",
+        "settings": "Nastavení",
+        "help": "Pomoc",
+        "plugins": "Rozšíření"
       }      
     },   
     "dashboard": {

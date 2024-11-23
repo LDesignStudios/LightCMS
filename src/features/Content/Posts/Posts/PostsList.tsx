@@ -9,13 +9,12 @@ import { HiChat, HiHeart } from 'react-icons/hi'
 
 import data from "@/translations/cz/cz.json";
 
-
 type PostWithAuthor = {
   id: string
   title: string
   slug: string
   content: string
-  imagePath: string  | null
+  imagePath: string | null
   published: boolean
   authorId: string
   createdAt: Date
@@ -30,9 +29,10 @@ type PostWithAuthor = {
 
 interface PostsListProps {
   initialPosts: PostWithAuthor[]
+  filter: 'all' | 'published' | 'drafts'
 }
 
-export function PostsList({ initialPosts }: PostsListProps) {
+export function PostsList({ initialPosts, filter }: PostsListProps) {
   const [posts, setPosts] = useState(initialPosts)
 
   const handleStatusToggle = async (postId: string, newStatus: boolean) => {
@@ -53,31 +53,34 @@ export function PostsList({ initialPosts }: PostsListProps) {
     }
   }
 
+  const filteredPosts = posts.filter(post => {
+    if (filter === 'published') return post.published
+    if (filter === 'drafts') return !post.published
+    return true // 'all'
+  })
+
   return (
     <div>
-      <div >  
-        
+      <div>
         <div className="space-y-4">
-          {posts.length === 0 ? (
+          {filteredPosts.length === 0 ? (
             <p className="text-gray-500">{data.posts.notFound}</p>
           ) : (
-            posts.map((post) => (
+            filteredPosts.map((post) => (
               <article 
                 key={post.id} 
                 className="rounded-md p-2 hover:bg-gray-100 transition-colors"
               >
                 <div className="flex gap-4">
-
-                      <div className="relative w-32 h-24 rounded-lg overflow-hidden">
-                        <Image
-                          src={post.imagePath || "/placeholder.webp"}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      </div>       
-
+                  <div className="relative w-32 h-24 rounded-lg overflow-hidden">
+                    <Image
+                      src={post.imagePath || "/placeholder.webp"}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>       
                   <div className="flex-grow">
                     <div className="flex justify-between items-start">
                       <div>
@@ -100,7 +103,6 @@ export function PostsList({ initialPosts }: PostsListProps) {
                         >
                           {post.published ? data.posts.published : data.posts.draft}
                         </button>
-                        
                         <div className="flex items-center space-x-3 text-sm text-gray-500">
                           <div className="flex items-center">
                             <HiChat className="w-4 h-4 mr-1" />
@@ -111,7 +113,6 @@ export function PostsList({ initialPosts }: PostsListProps) {
                             <span>{post.likeCount}</span>
                           </div>
                         </div>
-
                         <Link
                           href={`/admin/posts/edit/${post.id}`}
                           className="text-blue-600 hover:text-blue-800"
