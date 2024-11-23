@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { getPostLikes } from './actions';
-// import data from "@/translations/cz/cz.json";
+import data from "@/translations/cz/cz.json";
 
 interface Like {
   id: string;
@@ -29,10 +29,10 @@ export function LikesList({ postId }: LikesListProps) {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold"> Likes ({likes.length})</h2>
+      <h2 className="text-lg font-semibold"> {data.posts.likes.title} ({likes.length})</h2>
       <div className="space-y-4">
         {likes.length === 0 ? (
-          <p className="text-gray-500">Not found</p>
+          <p className="text-gray-500">{data.generic.notFound}</p>
         ) : (
           likes.map(like => (
             <div key={like.id} className="bg-gray-50 rounded-lg p-4">

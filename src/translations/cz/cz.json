@@ -50,9 +50,11 @@
     "posts": {
       "title": "Příspěvky",
       "post": "Příspěvek",
+      "allPosts": "Všechny příspěvky",
       "decription": "Popisek",
       "published": "Publikované",
       "draft": "Koncept",
+      "drafts": "Koncepty",
       "your-posts": "Vaše příspěvky",
       "notFound": "Zatím nemáte žádné příspěvky. Vytvořte svůj první příspěvek výše!",
       "created": "Vytvořil",
@@ -91,5 +93,8 @@
       "pages": "Stránky",
       "settings": "Nastavení",
       "logs": "Logy"
+    },
+    "generic": {
+      "notFound": "Nenašel jsem žadné data"
     }
 }

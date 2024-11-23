@@ -12,7 +12,7 @@ export default async function PostsPage() {
 
   const tabs = [
     { 
-      label: "All posts",
+      label: data.posts.allPosts,
       visible: true,
       content: (
         <Suspense fallback={<div>{data.loading.loading}</div>}>
@@ -20,22 +20,22 @@ export default async function PostsPage() {
         </Suspense>
       )
     },
-    { label: "Published", visible: true, content: (
+    { label: data.posts.published, visible: true, content: (
       <Suspense fallback={<div>{data.loading.loading}</div>}>
         <PostsList filter="published" initialPosts={posts} />
       </Suspense>
     ) },
-    { label: "Drafts", visible: true, content: (
+    { label: data.posts.drafts, visible: true, content: (
       <Suspense fallback={<div>{data.loading.loading}</div>}>
         <PostsList filter="drafts" initialPosts={posts} />
       </Suspense>
     ) },
-    { label: "Comments", visible: true, content: (
+    { label: data.posts.comments.title, visible: true, content: (
       <Suspense fallback={<div>{data.loading.loading}</div>}>
         <CommentsList postId={posts[0]?.id} />
       </Suspense>
     ) },
-    { label: "Likes", visible: true, content: (
+    { label: data.posts.likes.title, visible: true, content: (
       <Suspense fallback={<div>{data.loading.loading}</div>}>
         <LikesList postId={posts[0]?.id} />
       </Suspense>
@@ -52,7 +52,7 @@ export default async function PostsPage() {
         />
         
         <div className="flex">
-          <TabComponent tabs={tabs} />
+          <TabComponent tabs={tabs} />        
         </div>               
       </div>
     </div>

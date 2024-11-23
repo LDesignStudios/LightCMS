@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { getComments } from './actions';
 
+import data from "@/translations/cz/cz.json";
+
 interface Comment {
   id: string;
   content: string;
@@ -30,10 +32,10 @@ export function CommentsList({ postId }: CommentsListProps) {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold"> Comments ({comments.length})</h2>
+      <h2 className="text-lg font-semibold"> {data.posts.comments.title} ({comments.length})</h2>
       <div className="space-y-4">
         {comments.length === 0 ? (
-          <p className="text-gray-500"> Not found </p>
+          <p className="text-gray-500"> {data.generic.notFound} </p>
         ) : (
           comments.map(comment => (
             <div key={comment.id} className="bg-gray-50 rounded-lg p-4">
