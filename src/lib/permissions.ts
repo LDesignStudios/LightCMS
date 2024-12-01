@@ -46,6 +46,7 @@ export async function checkUserPermissions(userId: string) {
   const canViewLogs = await hasPermission(userId, Permission.VIEW_AUDIT_LOGS);
   const canManagePlugins = await hasPermission(userId, Permission.MANAGE_PLUGINS);
   const canManageCollections = await hasPermission(userId, Permission.MANAGE_COLLECTIONS);
+  const canEditDatabase = await hasPermission(userId, Permission.EDIT_DATABASE);
   return {
     canViewUsers,
     canManageRoles,
@@ -55,5 +56,6 @@ export async function checkUserPermissions(userId: string) {
     canManageSystem,
     canViewLogs,
     canManageCollections,
+    canEditDatabase,
   };
 } 

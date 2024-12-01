@@ -2,8 +2,14 @@ import { getTableData } from '@/features/Content/Collections/actions';
 import TableView from '@/features/Content/Collections/TableView';
 import CollectionsNavbar from '@/features/Content/Collections/CollectionsSidebar';
 
-export default async function TablePage() {
-    const tableName  = "User";
+interface Props {
+    params: {
+        tableName: string;
+    };
+}
+
+export default async function TablePage({ params }: Props) {
+    const { tableName } = params;
     const tableData = await getTableData(tableName);
 
     return (

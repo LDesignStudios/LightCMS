@@ -23,7 +23,8 @@ export enum Permission {
     VIEW_AUDIT_LOGS = 'view_logs',
     MANAGE_SETTINGS = 'manage_settings',
     MANAGE_PLUGINS = 'manage_plugins',
-    MANAGE_COLLECTIONS = 'manage_collections'
+    MANAGE_COLLECTIONS = 'manage_collections',
+    EDIT_DATABASE = 'edit_database'
   }
   
   export interface Role {

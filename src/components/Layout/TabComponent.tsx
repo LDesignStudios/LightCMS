@@ -8,8 +8,9 @@ import { IoFilterSharp } from "react-icons/io5";
 interface Tab {
   label: string;
   visible: boolean;
-  buttonLabel?: string,
-  buttonLink?: string | null,
+  count?: number;
+  buttonLabel?: string;
+  buttonLink?: string | null;
   buttonVisible?: boolean;
   content: JSX.Element;
 }
@@ -19,18 +20,15 @@ interface TabComponentProps {
   renderFilter?: boolean;
 }
 
-export function TabComponent({
-  tabs,
-  renderFilter,
-}: TabComponentProps) {
+export function TabComponent({ tabs, renderFilter }: TabComponentProps) {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabChange = (index: number) => {
     setActiveTab(index);
   };
 
-  const buttonClassName = "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-
+  const buttonClassName =
+    "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500";
 
   return (
     <div className="flex flex-col w-full">
@@ -55,6 +53,9 @@ export function TabComponent({
                     }}
                   >
                     {tab.label}
+                    {tab.count != null && (
+                      <span className="text-xs"> ({tab.count}) </span>
+                    )}
                   </button>
                 )
             )}
@@ -69,9 +70,12 @@ export function TabComponent({
           )}
         </div>
 
-        { tabs[activeTab]?.buttonVisible && tabs[activeTab].buttonLink && (
+        {tabs[activeTab]?.buttonVisible && tabs[activeTab].buttonLink && (
           <div>
-            <Link href={tabs[activeTab].buttonLink} className={clsx(buttonClassName)}>
+            <Link
+              href={tabs[activeTab].buttonLink}
+              className={clsx(buttonClassName)}
+            >
               {tabs[activeTab].buttonLabel}
             </Link>
           </div>

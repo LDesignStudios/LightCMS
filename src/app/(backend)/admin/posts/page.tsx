@@ -15,6 +15,7 @@ export default async function PostsPage() {
     {
       label: data.posts.allPosts,
       visible: true,
+      count: 89,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -27,6 +28,7 @@ export default async function PostsPage() {
     {
       label: data.posts.published,
       visible: true,
+      count: 83,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -39,6 +41,7 @@ export default async function PostsPage() {
     {
       label: data.posts.drafts,
       visible: true,
+      count: 6,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -51,6 +54,7 @@ export default async function PostsPage() {
     {
       label: data.posts.comments.title,
       visible: true,
+      count: 635,
       buttonLabel: data.buttons.add,
       buttonLink: null,
       buttonVisible: false,
@@ -63,6 +67,7 @@ export default async function PostsPage() {
     {
       label: data.posts.likes.title,
       visible: true,
+      count: 1123,
       buttonLabel: data.buttons.add,
       buttonLink: null,
       buttonVisible: false,
@@ -75,6 +80,7 @@ export default async function PostsPage() {
     {
       label: data.posts.categories.title,
       visible: true,
+      count: 4,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/new-category",
       buttonVisible: true,
