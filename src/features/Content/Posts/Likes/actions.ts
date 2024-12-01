@@ -61,10 +61,10 @@ export async function getLikeCount(postId: string): Promise<number> {
   }
 }
 
-export async function getPostLikes(postId: string) {
+export async function getPostLikes(userId: string) {
   try {
     const likes = await prisma.like.findMany({
-      where: { postId },
+      where: { userId },
       include: {
         user: {
           select: {
@@ -105,3 +105,7 @@ export async function hasUserLiked(postId: string): Promise<boolean> {
     return false
   }
 } 
+
+export async function getNumberOfUsersLikes () {
+  return 0
+}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import { ProfileAvatar } from "@/components/Layout/ProfileAvatar";
+import { ProfileAvatar } from "@/components/layout/ProfileAvatar";
 import { UserPermissionsDialog } from './UserPermissionsDialog';
 import { updateUserRole } from '../../roles/actions';
 import Link from 'next/link';

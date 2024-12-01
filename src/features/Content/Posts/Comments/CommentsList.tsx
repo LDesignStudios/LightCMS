@@ -15,20 +15,20 @@ interface Comment {
 }
 
 interface CommentsListProps {
-  postId: string;
+  authorId: string;
 }
 
-export function CommentsList({ postId }: CommentsListProps) {
+export function CommentsList({ authorId }: CommentsListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     const fetchComments = async () => {
-      const fetchedComments = await getComments(postId);
+      const fetchedComments = await getComments(authorId);
       setComments(fetchedComments);
     };
 
     fetchComments();
-  }, [postId]);
+  }, [authorId]);
 
   return (
     <div>

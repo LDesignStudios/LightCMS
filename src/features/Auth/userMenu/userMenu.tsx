@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
-import { ProfileAvatar } from "@/components/Layout/ProfileAvatar";
+import { ProfileAvatar } from "@/components/layout/ProfileAvatar";
 import Link from 'next/link';
 
 interface UserMenuProps {

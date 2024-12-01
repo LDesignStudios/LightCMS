@@ -12,20 +12,20 @@ interface Like {
 }
 
 interface LikesListProps {
-  postId: string;
+  authorId: string;
 }
 
-export function LikesList({ postId }: LikesListProps) {
+export function LikesList({ authorId }: LikesListProps) {
   const [likes, setLikes] = useState<Like[]>([]);
 
   useEffect(() => {
     const fetchLikes = async () => {
-      const fetchedLikes = await getPostLikes(postId);
+      const fetchedLikes = await getPostLikes(authorId);
       setLikes(fetchedLikes);
     };
 
     fetchLikes();
-  }, [postId]);
+  }, [authorId]);
 
   return (
     <div>

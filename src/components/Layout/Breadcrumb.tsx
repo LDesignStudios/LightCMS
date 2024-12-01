@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiHome, FiFileText, FiUsers, FiSettings, FiLock, FiLogOut } from 'react-icons/fi'; 
+import { FiHome, FiFileText, FiUsers, FiSettings, FiLock, FiLogOut, FiDatabase } from 'react-icons/fi'; 
 
 import data from "@/translations/cz/cz.json";
 
@@ -19,6 +19,7 @@ const breadcrumbMap: Record<string, { label: string; icon: JSX.Element }> = {
   '/admin/system/permissions': { label: 'Permissions Management', icon: <FiLock /> },
   '/admin/logs': { label: data.breadcrumb.logs, icon: <FiLogOut /> },
   '/admin/settings': { label: data.breadcrumb.settings, icon: <FiSettings /> },
+  '/admin/collections': {label: data.breadcrumb.collections, icon: <FiDatabase/>},
 };
 
 export const Breadcrumb = () => {
@@ -37,17 +38,17 @@ export const Breadcrumb = () => {
   });
 
   return (
-    <nav className="flex">
+    <nav className="flex text-sm">
       {breadcrumbItems.map((item, index) => (
         <div key={index} className="flex items-center">
           {!item.isLast ? (
             <Link href={item.href} className="text-blue-600 hover:underline flex items-center">
-              {item.icon && <span className="mr-1">{item.icon}</span>}
+             {/*{item.icon && <span className="mr-1">{item.icon}</span>}*/}
               {item.label}
             </Link>
           ) : (
             <span className="text-gray-500 flex items-center">
-              {item.icon && <span className="mr-1">{item.icon}</span>}
+              {/*{item.icon && <span className="mr-1">{item.icon}</span>}*/}
               {item.label}
             </span>
           )}

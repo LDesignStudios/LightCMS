@@ -22,7 +22,8 @@ export enum Permission {
     // System Management
     VIEW_AUDIT_LOGS = 'view_logs',
     MANAGE_SETTINGS = 'manage_settings',
-    MANAGE_PLUGINS = 'manage_plugins'
+    MANAGE_PLUGINS = 'manage_plugins',
+    MANAGE_COLLECTIONS = 'manage_collections'
   }
   
   export interface Role {

@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@/components/Layout/Breadcrumb";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { UserMenu } from "@/features/Auth/userMenu/userMenu";
 import { getUser } from "@/utils/getUser";
 

@@ -1,25 +1,57 @@
-import { TabComponent } from "@/components/Layout/TabComponent";
+import { TabComponent } from "@/components/layout/TabComponent";
+import { EditUserProfileForm } from "@/features/Auth/EditUserForm";
+import CollectionsSettingsForm from "@/features/Content/Settings/CollectionsForm";
+import { getUser } from "@/utils/getUser";
 
+const canManageInterface = false;
 const canManageSystem = true;
-const canManageSeo = true;
-const canManageIntegrations = true;
+const canManageSeo = false;
+const canManageIntegrations = false;
+const canManageCollections = true;
 
-export default function SettingsScreen() {
-    const tabs = [
-        { label: "User Profile", visible: true, content: "User Profile" },
-        { label: "Interface", visible: true, content: "User Interface" },
-        { label: "System Preferences", visible: true, content: "System Preferences" },
-        { label: "SEO", visible: canManageSeo, content: "SEO Management" },
-        { label: "System", visible: canManageSystem , content: "System" },
-        { label: "Integrations", visible: canManageIntegrations , content: "Integrations"},
-    ];
+export default async function SettingsScreen() {
+  const user = await getUser();
 
-
-    return (
-        <div className="">
-          <div className="flex flex-col items-start">          
-            <TabComponent tabs={tabs} />            
-          </div>
+  const tabs = [
+    {
+      label: "User Profile",
+      visible: true,
+      content: (
+        <div>
+          <EditUserProfileForm user={user} />
         </div>
-    );
+      ),
+    },
+    { label: "Interface", visible: canManageInterface, content: <></> },
+    {
+      label: "System Preferences",
+      visible: canManageInterface,
+      content: <></>,
+    },
+    { label: "SEO", visible: canManageSeo, content: <></> },
+    { label: "System", visible: canManageSystem, content: <></> },
+    {
+      label: "Integrations",
+      visible: canManageIntegrations,
+      content: <></>,
+    },
+    {
+      label: "Collections",
+      visible: canManageCollections,
+      content: (
+        <div>
+          <CollectionsSettingsForm />
+        </div>
+      ),
+    },
+    { label: "Plugins", visible: canManageIntegrations, content: <></> },
+  ];
+
+  return (
+    <div className="">
+      <div className="flex flex-col items-start">
+        <TabComponent tabs={tabs}/>
+      </div>
+    </div>
+  );
 }

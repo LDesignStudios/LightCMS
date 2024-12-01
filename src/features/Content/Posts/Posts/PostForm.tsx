@@ -138,7 +138,7 @@ export function PostForm({ post }: PostFormProps) {
           <div className="flex justify-end space-x-3">
             <button
               type="button"
-              onClick={() => router.push('/dashboard/posts')}
+              onClick={() => router.push('/admin/posts')}
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200"
             >
               {data.buttons.cancel}

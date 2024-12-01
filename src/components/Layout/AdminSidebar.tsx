@@ -17,6 +17,7 @@ import { useState } from "react";
 import { LuFile } from "react-icons/lu";
 import { IoMdSettings } from "react-icons/io";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
+import { SiDatabricks } from "react-icons/si";
 
 interface AdminSidebarProps {
   user?: User;
@@ -25,6 +26,7 @@ interface AdminSidebarProps {
   canManagePlugins?: boolean;
   canManageSystem?: boolean;
   canViewLogs?: boolean;
+  canViewCollections?: boolean;
 }
 
 export function AdminSidebar({
@@ -32,6 +34,7 @@ export function AdminSidebar({
   postsCount,
   canManagePlugins,
   canViewLogs,
+  canViewCollections,
 }: AdminSidebarProps) {
   const pathname = usePathname();
 
@@ -54,6 +57,7 @@ export function AdminSidebar({
       label: data.navigation.links.dashboard,
       icon: FiHome,
       path: "/admin",
+      isVisible: true
     },
     {
       label: "",
@@ -64,12 +68,21 @@ export function AdminSidebar({
       label: data.navigation.links.posts,
       icon: MdOutlinePushPin,
       count: postsCount,
+      isVisible: true
     },  
     {
       path: "/admin/pages",
       label: data.navigation.links.pages,
       icon: LuFile,      
+      isVisible: false
     },    
+    {
+      path: "/admin/collections",
+      label: data.navigation.links.collections,
+      condition: canViewCollections,
+      icon: SiDatabricks, 
+      isVisible: true    
+    },
     /*
     {
       label: data.navigation.links.title.system,
@@ -80,27 +93,23 @@ export function AdminSidebar({
       path: "/admin/logs",
       label: data.navigation.links.logs,
       condition: canViewLogs,
-      icon: FiFileText,      
+      icon: FiFileText,  
+      isVisible: false 
     },
     {
       path: "/admin/plugins",
       label: data.navigation.links.plugins,
       condition: canManagePlugins,
       icon: IoExtensionPuzzleOutline,      
+      isVisible: false
     },   
     {
       path: "/admin/settings",
       label: data.navigation.links.settings,
       condition: canViewLogs,
       icon: IoMdSettings,      
-    },
-    /*
-    {
-      path: "/admin/help",
-      label: data.navigation.links.help,
-      icon: FiHelpCircle,
-    },
-    */
+      isVisible: true
+    },       
   ];
 
   return (
@@ -133,7 +142,7 @@ export function AdminSidebar({
               );
             }
             return (
-              link.condition !== false && (
+              link.condition !== false && link.isVisible == true && (
                 <Link
                   key={link.path}
                   href={link.path || '/'}

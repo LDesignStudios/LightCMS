@@ -16,7 +16,8 @@
         "pages": "Stránky",
         "settings": "Nastavení",
         "help": "Pomoc",
-        "plugins": "Rozšíření"
+        "plugins": "Rozšíření",
+        "collections": "Data"
       }      
     },   
     "dashboard": {
@@ -64,7 +65,10 @@
         "title": "Komentáře"
       },
       "likes": {
-        "title": "Libí se"
+        "title": "Líbí se"
+      },
+      "categories": {
+        "title": "Kategorie"
       }
     },
     "forms": {
@@ -92,7 +96,8 @@
       "edit": "Upravit",
       "pages": "Stránky",
       "settings": "Nastavení",
-      "logs": "Logy"
+      "logs": "Logy",
+      "collections": "Data"
     },
     "generic": {
       "notFound": "Nenašel jsem žadné data"

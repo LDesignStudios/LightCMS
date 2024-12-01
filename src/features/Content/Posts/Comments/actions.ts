@@ -96,10 +96,10 @@ export async function deleteComment(commentId: string, slug: string): Promise<Ac
   }
 }
 
-export async function getComments(postId: string) {
+export async function getComments(authorId: string) {
   try {
     return await prisma.comment.findMany({
-      where: { postId },
+      where: { authorId },
       include: {
         author: {
           select: {

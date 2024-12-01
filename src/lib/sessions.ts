@@ -25,7 +25,7 @@ export async function getSession(): Promise<SessionPayload | null> {
 }
 
 export async function createSession(userId: string) {
-  const expiresAt = Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60; // 7 days expiration
+  const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hour in seconds
   const session = await encrypt({ userId, expiresAt });
 
   const cookieStore = await cookies();
