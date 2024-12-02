@@ -3,8 +3,8 @@ import { UserMenu } from "@/features/Auth/userMenu/userMenu";
 import { getUser } from "@/utils/getUser";
 
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
-import Input from "../UI/input";
+// import { IoSearch } from "react-icons/io5";
+// import Input from "../UI/input";
 
 async function Navbar() {
   const user = await getUser();
@@ -14,14 +14,15 @@ async function Navbar() {
         <Breadcrumb />
       </div>
       <div className="flex items-center gap-x-4">
+        {/* 
         <Input
               inputSize="sm"
               leftIcon={<IoSearch />}               
               placeholder="Search..." 
             />
-
+*/}
         <span>
-         <IoIosNotificationsOutline size={20}/>
+          <IoIosNotificationsOutline size={20} />
         </span>
         <UserMenu
           user={{

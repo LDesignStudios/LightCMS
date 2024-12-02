@@ -5,7 +5,10 @@ interface Table {
   name: string;
 }
 
-export async function getTableNames() {
+// Define a generic type for table data
+type TableData = Record<string, string | number | boolean | null>;
+
+export async function getTableNames(): Promise<string[]> {
   // Use a raw SQL query to fetch table names
   const result = await prisma.$queryRaw<Table[]>`SELECT name FROM sqlite_master WHERE type='table'`;
 
@@ -16,20 +19,20 @@ export async function getTableNames() {
 }
 
 // Function to fetch all rows from a specific table
-export async function getTableData(tableName: string): Promise<Record<string, any>[]> {
+export async function getTableData(tableName: string): Promise<TableData[]> {
   // Ensure that the table name is sanitized (optional, for extra safety)
-  const result = await prisma.$queryRawUnsafe(
+  const result = await prisma.$queryRawUnsafe<TableData[]>(
     `SELECT * FROM ${tableName}`
   );
 
-  return result as Record<string, any>[];
+  return result;
 }
 
 // Function to update a record in a table
 export async function updateTableRecord(
   tableName: string, 
   id: number | string, 
-  data: Record<string, any>
+  data: Partial<TableData>
 ): Promise<void> {
   const setClause = Object.entries(data)
     .filter(([key]) => key !== 'id') // Exclude id from update
@@ -38,6 +41,6 @@ export async function updateTableRecord(
 
   await prisma.$executeRawUnsafe(
     `UPDATE ${tableName} SET ${setClause} WHERE id = @id`,
-    ...Object.entries(data).map(([key, value]) => value)
+    ...Object.entries(data).map(([value]) => value)
   );
 }

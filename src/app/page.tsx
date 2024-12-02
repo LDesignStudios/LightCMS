@@ -1,3 +1,13 @@
+export default function HomeScreen () {
+  return (
+    <div>
+      Homepage
+    </div>
+  )
+}
+
+/*
+
 import { LikeButton } from "@/features/Content/Posts/Likes/LikeButton";
 import { getPublishedPosts } from "@/features/Content/Posts/Posts/actions";
 import { getSession } from "@/lib/sessions";
@@ -22,6 +32,15 @@ type PublishedPost = {
   isLiked: boolean;  
 };
 
+// Define a type for the session if not already defined
+type SessionType = {
+  user?: {
+    name?: string;
+    email?: string;
+  };
+  // Add other properties as needed
+};
+
 export default async function Home() {
   const posts = await getPublishedPosts();
   const session = await getSession();
@@ -31,8 +50,7 @@ export default async function Home() {
   const latestPosts = posts.slice(4);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gray-50">      
       {featuredPost && (
         <header className="bg-indigo-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,14 +89,13 @@ export default async function Home() {
         </header>
       )}
 
-      {/* Main Content */}
+      
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Trending Posts */}
         <section className="mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Trending</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {trendingPosts.map((post) => (
-              <PostCard post={post} session={session} key={post.id} />
+              <PostCard post={post} session={session || null} key={post.id} />
             ))}
           </div>
         </section>
@@ -87,7 +104,7 @@ export default async function Home() {
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Latest Posts</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {latestPosts.map((post) => (
-              <PostCard post={post} session={session} key={post.id} />
+             <PostCard post={post} session={session || null} key={post.id} />
             ))}
           </div>
         </section>
@@ -112,7 +129,7 @@ function PostCard({
   session,
 }: {
   post: PublishedPost;
-  session: any;
+  session: SessionType | null;
 }) {
   return (
     <article className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
@@ -149,3 +166,5 @@ function PostCard({
     </article>
   );
 }
+
+*/

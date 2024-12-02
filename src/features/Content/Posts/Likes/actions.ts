@@ -105,7 +105,3 @@ export async function hasUserLiked(postId: string): Promise<boolean> {
     return false
   }
 } 
-
-export async function getNumberOfUsersLikes () {
-  return 0
-}

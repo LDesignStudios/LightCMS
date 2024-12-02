@@ -5,13 +5,18 @@ import { formatTableValue } from "@/utils/formatters";
 import EditModal from "./EditModal";
 import { updateTableRecord } from "./actions";
 
-type TableProps<T extends Record<string, unknown>> = {
+type TableData = {
+  id: string | number;
+  [key: string]: string | number | boolean | null | undefined;
+};
+
+type TableProps<T extends TableData> = {
   initialData: T[];
   tableName: string;
   canEdit: boolean;
 };
 
-export default function TableViewClient<T extends Record<string, unknown>>({
+export default function TableViewClient<T extends TableData>({
   initialData,
   canEdit,
   tableName,
@@ -35,8 +40,7 @@ export default function TableViewClient<T extends Record<string, unknown>>({
 
   const handleSave = async (data: T) => {
     try {
-      await updateTableRecord(tableName, data.id as string | number, data);
-      // Refresh the page to show updated data
+      await updateTableRecord(tableName, data.id, data);
       window.location.reload();
     } catch {
       alert("Failed to update record. Please try again.");

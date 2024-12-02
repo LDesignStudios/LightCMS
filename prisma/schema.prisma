@@ -20,25 +20,25 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   profilePicture String?
-  profileColor   String?   
-  posts     Post[]
-  comments  Comment[]
-  likes     Like[]
+  profileColor   String?
+  posts          Post[]
+  comments       Comment[]
+  likes          Like[]
 }
 
 model AuditLog {
   id        String   @id @default(cuid())
   action    String
-  userId    String  
-  details   String 
+  userId    String
+  details   String
   ipAddress String?
   userAgent String?
   createdAt DateTime @default(now())
 }
 
 model Permission {
-  id          String   @id @default(cuid())
-  name        String   @unique
+  id          String  @id @default(cuid())
+  name        String  @unique
   description String?
   roles       Role[]
 }
@@ -76,23 +76,27 @@ model Like {
 }
 
 model Post {
-  id        String    @id @default(cuid())
-  title     String
-  slug      String    @unique
-  content   String
-  published Boolean   @default(false)
-  authorId  String
-  imagePath String?
-  author    User      @relation(fields: [authorId], references: [id])
-  comments  Comment[]
-  likes     Like[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id         String     @id @default(cuid())
+  title      String
+  slug       String     @unique
+  content    String
+  published  Boolean    @default(false)
+  authorId   String
+  imagePath  String?
+  author     User       @relation(fields: [authorId], references: [id])
+  comments   Comment[]
+  likes      Like[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
   categories Category[] @relation("PostCategories")
 }
 
 model Category {
-  id        String   @id @default(cuid())
-  name      String
-  posts     Post[]   @relation("PostCategories")
+  id    String @id @default(cuid())
+  slug  String @unique
+  name  String
+  description String 
+  posts Post[] @relation("PostCategories")
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }

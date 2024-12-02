@@ -2,12 +2,16 @@ import { checkUserPermissions } from '@/lib/permissions';
 import TableViewClient from './TableViewClient';
 import { getUser } from '@/utils/getUser';
 
-type TableProps<T extends Record<string, unknown>> = {
+type TableData = {
+    id: number;    
+};
+
+type TableProps<T extends TableData> = {
     table: T[];
     tableName?: string;
 };
 
-export default async function TableView<T extends Record<string, unknown>>({ 
+export default async function TableView<T extends TableData>({ 
     table, 
     tableName = 'Table' 
 }: TableProps<T>) {

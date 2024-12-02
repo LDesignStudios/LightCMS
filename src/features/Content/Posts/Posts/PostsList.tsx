@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { HiChat, HiHeart } from 'react-icons/hi'
 
 import data from "@/translations/cz/cz.json";
+import { shortenText } from '@/utils/formatters'
 
 type PostWithAuthor = {
   id: string
@@ -56,7 +57,7 @@ export function PostsList({ initialPosts, filter }: PostsListProps) {
   const filteredPosts = posts.filter(post => {
     if (filter === 'published') return post.published
     if (filter === 'drafts') return !post.published
-    return true // 'all'
+    return true 
   })
 
   return (
@@ -128,7 +129,7 @@ export function PostsList({ initialPosts, filter }: PostsListProps) {
                       </div>
                     </div>
                     <p className="mt-2 text-gray-600 line-clamp-2">
-                      {post.content}
+                      {shortenText(post.content, 96)}
                     </p>
                   </div>
                 </div>

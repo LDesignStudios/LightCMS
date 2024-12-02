@@ -6,16 +6,28 @@ import { TabComponent } from "@/components/layout/TabComponent";
 import { CommentsList } from "@/features/Content/Posts/Comments/CommentsList";
 import { LikesList } from "@/features/Content/Posts/Likes/LikesList";
 import { getUser } from "@/utils/getUser";
+import Categories from "@/features/Content/Category/Categories";
+import { getCategories } from "@/features/Content/Category/actions";
+import { getAllUserDraftPostsNumber, getAllUserPublishedPostsNumber, getAllUserLikesNumber, getAllUserCommentsNumber, getAllUserCategoriesNumber } from "@/utils/all";
+import { getUsersPostsCount } from "@/features/Content/Posts/Posts/getUsersPosts";
 
 export default async function PostsPage() {
   const posts = await getPosts();
   const user = await getUser();
+  const categories = await getCategories();
+
+  const publishedPosts = await getAllUserPublishedPostsNumber(user.id); 
+  const draftPosts = await getAllUserDraftPostsNumber(user.id); 
+  const postsCount = await getUsersPostsCount();
+  const commentsCount = await getAllUserCommentsNumber(user.id);
+  const likesCount = await getAllUserLikesNumber(user.id);
+  const categoriesCount = await getAllUserCategoriesNumber();
 
   const tabs = [
     {
       label: data.posts.allPosts,
       visible: true,
-      count: 89,
+      count: postsCount,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -28,7 +40,7 @@ export default async function PostsPage() {
     {
       label: data.posts.published,
       visible: true,
-      count: 83,
+      count: publishedPosts,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -41,7 +53,7 @@ export default async function PostsPage() {
     {
       label: data.posts.drafts,
       visible: true,
-      count: 6,
+      count: draftPosts,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/add-new",
       buttonVisible: true,
@@ -54,7 +66,7 @@ export default async function PostsPage() {
     {
       label: data.posts.comments.title,
       visible: true,
-      count: 635,
+      count: commentsCount,
       buttonLabel: data.buttons.add,
       buttonLink: null,
       buttonVisible: false,
@@ -67,7 +79,7 @@ export default async function PostsPage() {
     {
       label: data.posts.likes.title,
       visible: true,
-      count: 1123,
+      count: likesCount,
       buttonLabel: data.buttons.add,
       buttonLink: null,
       buttonVisible: false,
@@ -80,13 +92,13 @@ export default async function PostsPage() {
     {
       label: data.posts.categories.title,
       visible: true,
-      count: 4,
+      count: categoriesCount,
       buttonLabel: data.buttons.add,
       buttonLink: "/admin/posts/new-category",
       buttonVisible: true,
       content: (
         <Suspense fallback={<div>{data.loading.loading}</div>}>
-          <LikesList authorId={user.id} />
+          <Categories initialCategories={categories} />
         </Suspense>
       ),
     },

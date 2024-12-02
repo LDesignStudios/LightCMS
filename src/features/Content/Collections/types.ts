@@ -23,3 +23,8 @@ export type UserTable = {
     email: string;
     status: string;
 };
+
+export type TableData = {
+    id: string | number;
+    [key: string]: string | number | boolean | null;
+};

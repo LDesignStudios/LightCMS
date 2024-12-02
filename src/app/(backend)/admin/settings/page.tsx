@@ -1,6 +1,7 @@
 import { TabComponent } from "@/components/layout/TabComponent";
 import { EditUserProfileForm } from "@/features/Auth/EditUserForm";
 import CollectionsSettingsForm from "@/features/Content/Settings/CollectionsForm";
+import System from "@/features/Content/Settings/System";
 import { getUser } from "@/utils/getUser";
 
 const canManageInterface = false;
@@ -29,7 +30,15 @@ export default async function SettingsScreen() {
       content: <></>,
     },
     { label: "SEO", visible: canManageSeo, content: <></> },
-    { label: "System", visible: canManageSystem, content: <></> },
+    {
+      label: "System",
+      visible: canManageSystem,
+      content: (
+        <>          
+          <System />
+        </>
+      ),
+    },
     {
       label: "Integrations",
       visible: canManageIntegrations,
@@ -50,7 +59,7 @@ export default async function SettingsScreen() {
   return (
     <div className="">
       <div className="flex flex-col items-start">
-        <TabComponent tabs={tabs}/>
+        <TabComponent tabs={tabs} />
       </div>
     </div>
   );
